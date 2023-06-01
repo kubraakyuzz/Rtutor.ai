@@ -40,7 +40,7 @@ Rtutor.ai websitesine buradaki linkten ulaşıp aşağıda bahsedilen özellikle
 
 - Data kısmından istediğimiz datayı seçtikten sonra İstersek example request kısmından hazır komutları çalıştırabiliriz ya da metin kutusuna yapmak istediğimiz komutu yazabiliriz.
 
-![Home kısmından data seçme işlemi](C:\Users\kubra\OneDrive\Masaüstü\rtutor\Resim1.png)
+![Home kısmından data seçme işlemi](https://github.com/kubraakyuzz/Rtutor.ai/blob/main/rtutor/Resim1.png)
 
 
 diamonds veri seti üzerinde alıştırma yapmadan önce veri setine biraz göz atalım.
@@ -66,7 +66,7 @@ summary(diamonds)
 Veri setine rtutor 'Data' kısmından çok kolay bir şekilde erişebiliriz.
 Ayrıca yaptığımız her işlemde veri setinin seçilmiş kısımları güncellenmektedir.
 
-![](C:\Users\kubra\OneDrive\Masaüstü\rtutor\Resim2.png)
+![](https://github.com/kubraakyuzz/Rtutor.ai/blob/main/rtutor/Resim2.png)
 
 
 
@@ -81,7 +81,7 @@ Ayrıca yaptığımız her işlemde veri setinin seçilmiş kısımları güncel
 - çizdirmek istediğimiz grafikleri komut olarak yazarak grafikleri gözlemleyebiliriz. Grafiklerin üst kısmında kodları da görebiliriz.
 
 
-![boxplot x by color](C:\Users\kubra\OneDrive\Masaüstü\rtutor\Resim3.png)
+![boxplot x by color](https://github.com/kubraakyuzz/Rtutor.ai/blob/main/rtutor/Resim3.png)
 
 
 
@@ -95,7 +95,7 @@ ggplot(data = diamonds,aes(x=color,y=x))+geom_boxplot()
 - Şimdi de birkaç tane sıralı işlem yapalım.
 
 
-![](C:\Users\kubra\OneDrive\Masaüstü\rtutor\Resim4.png)
+![](https://github.com/kubraakyuzz/Rtutor.ai/blob/main/rtutor/Resim4.png)
 
 
 ---------------------------------
@@ -133,7 +133,7 @@ ggplot(data = diamonds, aes(x = carat, y = depth, size = carat, color = price)) 
 
 
 
-![](C:\Users\kubra\OneDrive\Masaüstü\rtutor\Resim5.png)
+![](https://github.com/kubraakyuzz/Rtutor.ai/blob/main/rtutor/Resim5.png)
 
 ### Sonuç:
 
@@ -146,19 +146,19 @@ aggregate(price ~ color, data= diamonds,FUN=mean)
 - EDA kısmından çeşitli özetlere ve veri seti hakkında bazı bilgilere ulaşabiliriz.
 
 
-![](C:\Users\kubra\OneDrive\Masaüstü\rtutor\Resim6.png)
+![](https://github.com/kubraakyuzz/Rtutor.ai/blob/main/rtutor/Resim6.png)
 
 
 
 - Report kısmından istersek html formatında istersek rmarkdown formatında rapor oluşturabiliriz.
 
 
-![](C:\Users\kubra\OneDrive\Masaüstü\rtutor\Resim7.png)
+![](https://github.com/kubraakyuzz/Rtutor.ai/blob/main/rtutor/Resim7.png)
 
 
 - Ayrıca Rtutor  yapmasını istediğimiz işlemi yaparken chatcpt kullanarak ekrana rastgele motivasyon cümleleri de yazıyor
 
-![](C:\Users\kubra\OneDrive\Masaüstü\rtutor\Resim8.png)
+![](https://github.com/kubraakyuzz/Rtutor.ai/blob/main/rtutor/Resim8.png)
 
 
-![](C:\Users\kubra\OneDrive\Masaüstü\rtutor\Resim9.png)
+![](https://github.com/kubraakyuzz/Rtutor.ai/blob/main/rtutor/Resim9.png)
