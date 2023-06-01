@@ -40,7 +40,7 @@ Rtutor.ai websitesine buradaki linkten ulaşıp aşağıda bahsedilen özellikle
 
 - Data kısmından istediğimiz datayı seçtikten sonra İstersek example request kısmından hazır komutları çalıştırabiliriz ya da metin kutusuna yapmak istediğimiz komutu yazabiliriz.
 
-![Home kısmından data seçme işlemi](https://github.com/kubraakyuzz/Rtutor.ai/blob/main/rtutor/Resim1.png)
+![Home kısmından data seçme işlemi](C:\Users\kubra\OneDrive\Belgeler\GitHub\Rtutor.ai\rtutor\Resim1.png)
 
 
 diamonds veri seti üzerinde alıştırma yapmadan önce veri setine biraz göz atalım.
@@ -66,7 +66,7 @@ summary(diamonds)
 Veri setine rtutor 'Data' kısmından çok kolay bir şekilde erişebiliriz.
 Ayrıca yaptığımız her işlemde veri setinin seçilmiş kısımları güncellenmektedir.
 
-![](https://github.com/kubraakyuzz/Rtutor.ai/blob/main/rtutor/Resim2.png)
+![](C:\Users\kubra\OneDrive\Belgeler\GitHub\Rtutor.ai\rtutor\Resim2.png)
 
 
 
@@ -81,7 +81,7 @@ Ayrıca yaptığımız her işlemde veri setinin seçilmiş kısımları güncel
 - çizdirmek istediğimiz grafikleri komut olarak yazarak grafikleri gözlemleyebiliriz. Grafiklerin üst kısmında kodları da görebiliriz.
 
 
-![boxplot x by color](https://github.com/kubraakyuzz/Rtutor.ai/blob/main/rtutor/Resim3.png)
+![boxplot x by color](C:\Users\kubra\OneDrive\Belgeler\GitHub\Rtutor.ai\rtutor\Resim3.png)
 
 
 
@@ -95,7 +95,7 @@ ggplot(data = diamonds,aes(x=color,y=x))+geom_boxplot()
 - Şimdi de birkaç tane sıralı işlem yapalım.
 
 
-![](https://github.com/kubraakyuzz/Rtutor.ai/blob/main/rtutor/Resim4.png)
+![](C:\Users\kubra\OneDrive\Belgeler\GitHub\Rtutor.ai\rtutor\Resim4.png)
 
 
 ---------------------------------
@@ -133,32 +133,103 @@ ggplot(data = diamonds, aes(x = carat, y = depth, size = carat, color = price)) 
 
 
 
-![](https://github.com/kubraakyuzz/Rtutor.ai/blob/main/rtutor/Resim5.png)
+![](C:\Users\kubra\OneDrive\Belgeler\GitHub\Rtutor.ai\rtutor\Resim5.png)
 
 ### Sonuç:
 
 ```{r diamonds3 }
 aggregate(price ~ color, data= diamonds,FUN=mean)
 ```
+Günlük dönüşümünden sonra fiyat dağılımını çizelim.
+
+
+```{r diamonds7 }
+# Günlük dönüştürülmüş fiyat için yeni bir değişken oluşturma
+diamonds$log_price <- log(diamonds$price)
+
+# Günlüğe dönüştürülmüş fiyatın dağılımını çizme
+library(ggplot2)
+ggplot(diamonds, aes(x = log_price)) +
+  geom_histogram(binwidth = 0.2, color = "black", fill = "white") +
+  labs(x = "Log-Transformed Price", y = "Frequency")
+```
+
+-------------------------
+
+```{r diamonds4 }
+library(ggplot2)
+ggplot(data = diamonds, aes(x = x)) + geom_histogram()
+```
+
+Kesinlik ve netlik kombinasyonlarını çizdirelim.
+
+
+```{r diamonds5 }
+#Yalnızca kesme ve netlik değişkenleriyle yeni bir veri çerçevesi oluşturun
+df_cut_clarity <- diamonds[, c("cut", "clarity")]
+
+ggplot(df_cut_clarity, aes(x = cut, fill = clarity)) + 
+  geom_bar()
+```
+
+-----------------------------
+
+3 karattan büyük elmasları çıkarın. Bir fiyat ve karat modeli oluşturun. Netlik ile artıkların bir keman planı oluşturun. Çizimi -10000 ile 10000 arasında sınırlayın.
+
+
+
+```{r diamonds6 }
+# 3 karattan büyük elmasları çıkarma
+df <- diamonds[diamonds$carat <= 3, ]
+
+# Bir fiyat ve karat modeli oluşturma
+model <- lm(price ~ carat, data = diamonds)
+
+# Netlik ile artıkların bir keman grafiği oluşturma
+library(ggplot2)
+ggplot(diamonds, aes(x = clarity, y = resid(model))) +
+  geom_violin(trim = FALSE, draw_quantiles = c(0.25, 0.5, 0.75)) +
+  ylim(-10000, 10000)
+```
+
+-----------------------------------------
+
+Bir pasta grafiği kullanarak kesimin dağılımını çizelim.
+
+```{r diamonds8 }
+# Yalnızca kesme değişkenini içeren veri çerçevesinin bir alt kümesini oluşturma
+cut_df <- diamonds[, "cut"]
+
+#Her kesim seviyesi için gözlem sayısı
+cut_counts <- table(cut_df)
+
+# Bir pasta grafiği kullanarak kesim dağılımını çizme
+pie(cut_counts)
+
+```
+
+
 
 *************************
 
-- EDA kısmından çeşitli özetlere ve veri seti hakkında bazı bilgilere ulaşabiliriz.
+- EDA kısmından çeşitli özetlere ve yaptığımız işlemler doğrultusunda veri seti hakkında bazı bilgilere ulaşabiliriz.
 
 
-![](https://github.com/kubraakyuzz/Rtutor.ai/blob/main/rtutor/Resim6.png)
+![](C:\Users\kubra\OneDrive\Belgeler\GitHub\Rtutor.ai\rtutor\Resim6.png)
 
 
 
-- Report kısmından istersek html formatında istersek rmarkdown formatında rapor oluşturabiliriz.
+- Report kısmından istersek html formatında istersek rmarkdown formatında rapor oluşturabiliriz.Chunk seçenekleri olması da dahil etmek istemediğimiz hatalı kısımlar olduğunda veya veri setinin bir kaç adım öncesindeki halinde yeniden çalışmak istediğimizde kolaylık sağlıyor.
 
 
-![](https://github.com/kubraakyuzz/Rtutor.ai/blob/main/rtutor/Resim7.png)
+![](C:\Users\kubra\OneDrive\Belgeler\GitHub\Rtutor.ai\rtutor\Resim7.png)
 
 
-- Ayrıca Rtutor  yapmasını istediğimiz işlemi yaparken chatcpt kullanarak ekrana rastgele motivasyon cümleleri de yazıyor
+- Ayrıca Rtutor  yapmasını istediğimiz işlemi yaparken chatgpt kullanarak ekrana rastgele motivasyon cümleleri de yazıyor
 
-![](https://github.com/kubraakyuzz/Rtutor.ai/blob/main/rtutor/Resim8.png)
+![](C:\Users\kubra\OneDrive\Belgeler\GitHub\Rtutor.ai\rtutor\Resim8.png)
 
 
-![](https://github.com/kubraakyuzz/Rtutor.ai/blob/main/rtutor/Resim9.png)
+![](C:\Users\kubra\OneDrive\Belgeler\GitHub\Rtutor.ai\rtutor\Resim9.png)
+
+
