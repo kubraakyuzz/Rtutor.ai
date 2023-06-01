@@ -1,0 +1,164 @@
+---
+title: "Rtutor"
+author: "Kübra Akyüz"
+date: "2023-05-24"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## R İLE VERİ ANALİZİ
+### Rtutor.ai
+
+RTutor, öğrencilerin R programlama dilini öğrenmelerine yardımcı olan açık kaynaklı bir platformdur. Bu platform, interaktif öğrenme materyalleri oluşturmak için kullanılabilir ve bu materyaller, öğrencilerin R programlama becerilerini geliştirmelerine ve R projelerinde daha deneyimli hale gelmelerine yardımcı olur.
+
+RTutor platformu, öğrencilere R programlama dili hakkında çeşitli konularda pratik yapma imkanı sunar. Örneğin, veri analizi, veri görselleştirme, lineer regresyon, logistic regresyon, simülasyon ve monte carlo yöntemleri gibi konularda öğrencilerin pratik yapmalarına olanak sağlar.
+
+RTutor web sitesinde birçok farklı öğrenme materyali mevcuttur. Bu materyaller genellikle bir açıklama ve gerekli olan paketleri yükleme gibi önemli bilgiler içerir. Materyaller, öğrencilerin R kodunu yazmalarını ve sonuçları yorumlamalarını gerektiren sorular ve görevler içerebilir.
+
+RTutor öğrencilerin pratik yapmalarını ve gerçek dünya problemlerine R programlama dili ile çözüm üretmelerini sağlar.İnteraktif öğrenme materyalleri, öğrencilerin R programlama dili konusunda öğrendikleri bilgileri uygulamalarına yardımcı olarak, öğrenmeyi de daha etkili hale getirir. Ayrıca, öğrencilerin yanlış cevaplarını veya hatalı kodlarını tespit etmelerine yardımcı olan geri bildirimler de sağlar.
+
+RTutor materyalleri, R Markdown dosyaları olarak oluşturulur ve öğrencilerin bu dosyaları indirip kendi bilgisayarlarında çalıştırmalarına olanak sağlar. Bu dosyalar, öğrencilerin R programlama dilini öğrenmeleri ve becerilerini geliştirmeleri için kapsamlı bir kaynaktır.
+
+RTutor, R kodunu hızlı bir şekilde oluşturabilen ve test edebilen yapay zeka tabanlı bir uygulamadır.OpenAI'nin Davinci'sine (ChatGPT'nin kardeşi) yapılan API çağrılarıyla desteklenen RTutor, doğal dilleri daha sonra Shiny platformunda yürütülen R betiklerine çevirir.Bir R Markdown kaynak dosyası ve HTML raporu oluşturulabilir.
+
+RTutor problem setleri, doğrudan RStudio'da RMarkdown dosyaları olarak veya Shiny tarafından desteklenen tarayıcı tabanlı bir arayüzde çözülebilir.
+
+R markdown formatında bir çözüm dosyası yazarak etkileşimli bir problem seti yaratırız.Çözüm, alıştırma açıklamasına ve örnek bir çözüme ek olarak, manuel olarak uyarlanmış testler, ipuçları, sınavlar veya örneğin ödül vermek için diğer komutları içerebilir.Manuel ipuçları veya testler belirtilmediğinde, RTutor otomatik olarak testler ve ipuçları üretecektir.
+
+Rtutor’da mpg, diamonds vb. birçok hazır veri seti mevcuttur. İstediğimiz veri setini seçerek üzerinde çalışabiliriz.Eğer kendi verimiz üzerinde çalışmamız gerekiyorsa File upload kısmından kendi verilerimizi de yükleyebiliriz.
+
+Rtutor.ai websitesine buradaki linkten ulaşıp aşağıda bahsedilen özelliklere ve alıştırmalara göz atabilirsiniz.
+ <https://rtutor.ai/>. 
+
+---------------------------------
+
+ 
+### Bazı alıştırmalar 
+![Rtutor.ai anasayfa](https://media.theresanaiforthat.com/rtutor.png)
+
+- Data kısmından istediğimiz datayı seçtikten sonra İstersek example request kısmından hazır komutları çalıştırabiliriz ya da metin kutusuna yapmak istediğimiz komutu yazabiliriz.
+
+![Home kısmından data seçme işlemi](C:\Users\kubra\OneDrive\Masaüstü\rtutor\Resim1.png)
+
+
+diamonds veri seti üzerinde alıştırma yapmadan önce veri setine biraz göz atalım.
+
+
+
+#### Diamonds  veri seti
+
+Diamonds veri seti, R paketi olan 'ggplot2' ile birlikte gelen bir veri setidir. tidyverse paketinin yüklenmesi otomatik olarak ggplot2'yi yükleyecektir. Bu veri seti, 53 bin adet elmasın özelliklerini içermektedir.
+
+```{r d}
+library(ggplot2)
+data(diamonds)
+
+```
+
+ Veri setinin özetini alalım
+```{r dias}
+summary(diamonds)
+
+```
+
+Veri setine rtutor 'Data' kısmından çok kolay bir şekilde erişebiliriz.
+Ayrıca yaptığımız her işlemde veri setinin seçilmiş kısımları güncellenmektedir.
+
+![](C:\Users\kubra\OneDrive\Masaüstü\rtutor\Resim2.png)
+
+
+
+<!-- ```{r diamonds4} -->
+<!-- library(ggplot) -->
+<!--  ggplot(diamonds, aes(x = carat, y = price, color = clarity)) + -->
+<!--    geom_point() -->
+<!-- ``` -->
+
+--------------------------
+
+- çizdirmek istediğimiz grafikleri komut olarak yazarak grafikleri gözlemleyebiliriz. Grafiklerin üst kısmında kodları da görebiliriz.
+
+
+![boxplot x by color](C:\Users\kubra\OneDrive\Masaüstü\rtutor\Resim3.png)
+
+
+
+#### Sonuç:
+
+```{r diamonds}
+library(ggplot2)
+ggplot(data = diamonds,aes(x=color,y=x))+geom_boxplot()
+```
+
+- Şimdi de birkaç tane sıralı işlem yapalım.
+
+
+![](C:\Users\kubra\OneDrive\Masaüstü\rtutor\Resim4.png)
+
+
+---------------------------------
+"
+fiyata göre ggplot kabarcık rengi 
+kesime göre renklendirilmiş
+derinliğe göre boyut
+başlık elmas grafiği
+büzülme noktaları
+mavi yatay çizgi 10000
+"
+
+
+- yapmak istediğimiz komutu türkçe ya da ingilizce yazabiliriz fakat türkçeye duyarlılığı daha az olduğundan bazen sıkıntılar çıkabiliyor.
+
+#### Sonuç:
+
+```{r diamonds2}
+ggplot(data = diamonds, aes(x = carat, y = depth, size = carat, color = price)) +
+  geom_point() +
+  scale_color_gradient(low = "blue", high = "red") +
+  geom_hline(yintercept = 10000, color = "blue") +
+  facet_wrap(~cut) +
+  labs(title = "Diamonds Graph")
+
+```
+
+
+
+
+------------------------------  
+
+
+- Renge göre ortalama fiyata bakalım
+
+
+
+![](C:\Users\kubra\OneDrive\Masaüstü\rtutor\Resim5.png)
+
+### Sonuç:
+
+```{r diamonds3 }
+aggregate(price ~ color, data= diamonds,FUN=mean)
+```
+
+*************************
+
+- EDA kısmından çeşitli özetlere ve veri seti hakkında bazı bilgilere ulaşabiliriz.
+
+
+![](C:\Users\kubra\OneDrive\Masaüstü\rtutor\Resim6.png)
+
+
+
+- Report kısmından istersek html formatında istersek rmarkdown formatında rapor oluşturabiliriz.
+
+
+![](C:\Users\kubra\OneDrive\Masaüstü\rtutor\Resim7.png)
+
+
+- Ayrıca Rtutor  yapmasını istediğimiz işlemi yaparken chatcpt kullanarak ekrana rastgele motivasyon cümleleri de yazıyor
+
+![](C:\Users\kubra\OneDrive\Masaüstü\rtutor\Resim8.png)
+
+
+![](C:\Users\kubra\OneDrive\Masaüstü\rtutor\Resim9.png)
